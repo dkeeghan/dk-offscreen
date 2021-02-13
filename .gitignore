@@ -15,6 +15,7 @@
 ## temp folders
 /.tmp/
 /.cache/
+/.parcel-cache/
 
 # build
 /_site/
