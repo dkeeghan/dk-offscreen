@@ -1,0 +1,57 @@
+import { Story, Preview, Meta, Props, withKnobs, withWebComponentsKnobs } from '@open-wc/demoing-storybook';
+import { html } from 'lit-html';
+import '../dk-offscreen.js';
+
+<Meta
+  title="dk-offscreen"
+  decorators={[withKnobs, withWebComponentsKnobs]}
+  parameters={{ component: 'dk-offscreen', options: { selectedPanel: 'storybookjs/knobs/panel' } }}
+/>
+
+# dk-offscreen
+
+A component for navigation drawer style navigation.
+
+## Features:
+
+- `dk-offscreen-toggle` - A button that keeps in sync with the navigation drawer to ensure that the appropriate `aria-` states and classes are applied
+- `dk-offscreen` - An navigation drawer that will show and hide based on user input.
+
+## How to use
+
+### Installation
+
+```bash
+npm install dk-offscreen
+```
+
+```js
+import 'dk-offscreen/dk-offscreen.js';
+```
+
+## Example
+
+### Simple
+
+<Preview>
+  <Story name="Simple">
+    {html`
+      <dk-offscreen-toggle for="ex-1">
+        <button>Click to expand/collapse</button>
+      </dk-offscreen-toggle>
+      <dk-offscreen id="ex-1">
+        <p>Content inside the navigation drawer</p>
+      </dk-offscreen>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+### Toggle
+
+<Props of="dk-offscreen-toggle" />
+
+### Container
+
+<Props of="dk-offscreen" />

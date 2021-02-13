@@ -1,0 +1,111 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "dk-offscreen",
+      "path": "./dk-offscreen.js",
+      "description": "Expandable container that can be controlled individually, or as a group. Either using the\nexpanded attribute, or using the <dk-offscreen-toggle> component.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "An id is required for the container so it can be targeted by the toggle button",
+          "type": "String",
+          "default": "\"\""
+        },
+        {
+          "name": "expanded",
+          "description": "Sets or unsets the expanded state of the container",
+          "type": "Boolean",
+          "default": "\"false\""
+        },
+        {
+          "name": "from-right",
+          "description": "Open from the right hand side",
+          "type": "Boolean",
+          "default": "\"false\""
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the component and resets it to open by default and removes functionality",
+          "type": "Boolean",
+          "default": "\"false\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "An id is required for the container so it can be targeted by the toggle button",
+          "type": "String",
+          "default": "\"\""
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "Sets or unsets the expanded state of the container",
+          "type": "Boolean",
+          "default": "\"false\""
+        },
+        {
+          "name": "fromRight",
+          "attribute": "from-right",
+          "description": "Open from the right hand side",
+          "type": "Boolean",
+          "default": "\"false\""
+        },
+        {
+          "name": "noAnimation",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disables the component and resets it to open by default and removes functionality",
+          "type": "Boolean",
+          "default": "\"false\""
+        }
+      ],
+      "events": [
+        {
+          "name": "dk-offscreen.update",
+          "description": "When a change is made to the state of the container, this event is fired to let any subscribed buttons know to also update."
+        }
+      ]
+    },
+    {
+      "name": "dk-offscreen-toggle",
+      "path": "./dk-offscreen.js",
+      "description": "Toggle Button that controls the <dk-offscreen> container and adds a11y\ncontrols like aria- tags and keeps the button in sync with the container.",
+      "attributes": [
+        {
+          "name": "for",
+          "description": "The ID of the container that this toggle button controls.",
+          "type": "String",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "for",
+          "attribute": "for",
+          "description": "The ID of the container that this toggle button controls.",
+          "type": "String",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "dk-offscreen-toggle.click",
+          "description": "On click, fires this event which is listened to by the container."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "An <a> or <button> element that will act as the interactive button for the expandable container."
+        }
+      ]
+    }
+  ]
+}

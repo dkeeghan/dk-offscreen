@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8">
+		<title>&lt;dk-offscreen&gt; Demo</title>
+
+		<script type="module" src="../dk-offscreen.js"></script>
+		<link href="../compiled/dk-offscreen.css" rel="stylesheet" />
+
+		<style>
+			dk-offscreen {
+				background-color: #CCC;
+				box-shadow: 5px 0 5px rgba(0, 0, 0, 0.2);
+				outline: none;
+			}
+
+			dk-offscreen[from-right] {
+				background-color: #333;
+				color: #FFF;
+				box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
+			}
+
+			#nav-3 {
+				transition: none;
+			}
+
+			#nav-1a[disabled] {
+				left: 0;
+				transform: none;
+				transition: none;
+			}
+
+			#nav-1a[disabled] ~ section {
+				margin-left: 300px;
+			}
+
+			body.has-no-scroll {
+				position: fixed;
+				overflow: hidden;
+				width: 100%;
+				min-height: 100%;
+				overflow-y: scroll;
+			}
+
+			.vh {
+				border: 0;
+				clip: rect(0 0 0 0);
+				height: 1px;
+				margin: -1px;
+				overflow: hidden;
+				padding: 0;
+				position: absolute;
+				width: 1px;
+				white-space: nowrap;
+			}
+
+			.vh.focusable:active,
+			.vh.focusable:focus {
+				clip: auto;
+				height: auto;
+				margin: 0;
+				overflow: visible;
+				position: static;
+				width: auto;
+				white-space: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<dk-offscreen-toggle for="nav-1">
+			Toggle Left Drawer
+		</dk-offscreen-toggle>
+
+		<dk-offscreen id="nav-1">
+			<dk-offscreen-toggle for="nav-1">
+				Close
+			</dk-offscreen-toggle>
+
+			<p>This is child content</p>
+		</dk-offscreen>
+
+		<dk-offscreen-toggle for="nav-1a">
+			Toggle Left Drawer (0,l only)
+		</dk-offscreen-toggle>
+
+		<dk-offscreen id="nav-1a" enabled-at="0,l">
+			<dk-offscreen-toggle for="nav-1a">
+				Close
+			</dk-offscreen-toggle>
+
+			<p>This is child content - only an offscreen nav at 0 to l breakpoint</p>
+		</dk-offscreen>
+
+		<dk-offscreen-toggle for="nav-2">
+			Toggle Right Drawer
+		</dk-offscreen-toggle>
+
+		<button id="toggle-nav-2">Manually Toggle Expanded State for Nav 2</button>
+
+		<dk-offscreen id="nav-2" from-right>
+			<dk-offscreen-toggle for="nav-2">
+				Close
+			</dk-offscreen-toggle>
+
+			<p>This is child content</p>
+
+			<div>
+				<button id="disable-nav-2">Toggle Disabled State</button>
+			</div>
+
+			<p>Maecenas non nulla eget erat bibendum egestas. Phasellus laoreet posuere urna ut ultrices. Morbi eget est facilisis, imperdiet purus egestas, sollicitudin dolor. Nunc lobortis ut orci quis congue. Nunc sit amet laoreet augue. Donec a nibh accumsan, finibus purus eget, venenatis tortor. Fusce lobortis libero luctus urna euismod, non porttitor dui eleifend. Aenean non massa diam. Quisque sollicitudin maximus eros, accumsan aliquet ligula. Ut blandit nunc et lectus porta, a auctor sapien tempor. Phasellus commodo lorem in leo lacinia porttitor. Suspendisse et condimentum velit. Fusce a ex lectus. Nullam vel condimentum est.</p>
+			<p>Suspendisse sit amet pulvinar tortor. Donec vel lobortis arcu. Nullam sit amet commodo eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed feugiat ipsum posuere enim imperdiet feugiat. Sed accumsan eu augue nec viverra. Ut posuere nisi non bibendum efficitur. Proin elementum convallis felis, quis bibendum velit auctor ut. Curabitur ultricies urna enim, non sodales libero tristique eget.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus venenatis ornare. Proin nec leo sollicitudin, rhoncus odio condimentum, porta nisi. Vivamus lacinia risus quam, sed suscipit lacus blandit eu. Praesent scelerisque laoreet risus, sed elementum tortor fringilla id. Nulla fermentum sapien eros, quis dictum urna congue et. Proin lacus sapien, fringilla quis congue non, pharetra sed turpis. Pellentesque condimentum, risus vel dignissim lobortis, lacus est malesuada ex, nec blandit enim lectus ut eros. Vivamus non ullamcorper dui. Nunc aliquet consequat lectus, ut pellentesque est faucibus eget. Suspendisse iaculis tristique pharetra. Maecenas et mollis odio.</p>
+			<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nec orci pharetra ligula lobortis volutpat pulvinar vel sapien. In imperdiet tellus sapien, fermentum venenatis nulla aliquet sed. Vestibulum rutrum condimentum ex, ac egestas tellus elementum sed. Aenean accumsan libero eu arcu fringilla, at vulputate velit pharetra. Aenean congue dui arcu, at facilisis mauris pulvinar in. Praesent lacus nisl, convallis at ornare in, ullamcorper sit amet diam. Duis quis ultrices metus. Integer porttitor imperdiet odio, at condimentum quam. Suspendisse ornare, ipsum et blandit blandit, risus lacus dapibus dolor, id malesuada nisl lectus eget mi. Suspendisse erat est, molestie vitae ligula sit amet, convallis commodo ligula. In ultrices, dui iaculis ullamcorper dictum, mi nunc tempor sapien, non pellentesque dolor libero sed purus. Sed laoreet nisl ultrices, lobortis justo a, consectetur ipsum. Fusce ullamcorper luctus commodo. Mauris vestibulum dolor eu odio hendrerit suscipit. Sed et posuere metus.</p>
+			<p>Proin semper turpis nibh, sed consectetur ligula cursus sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque placerat aliquet. Cras congue vehicula quam at varius. Vestibulum velit ipsum, rutrum at velit eu, faucibus vehicula metus. Morbi eu maximus urna. Praesent pretium placerat lobortis. In fringilla ullamcorper tristique. Nulla et finibus eros, sed finibus urna. Aliquam id turpis eget nibh sollicitudin faucibus. In tincidunt tincidunt lectus nec volutpat. Ut nec arcu vitae ex sodales aliquet et non magna. Proin porta, tortor vel aliquet luctus, orci massa porttitor nisl, sed congue sem purus vitae mauris. Mauris pharetra euismod sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dictum consectetur ipsum, in ultricies erat interdum imperdiet.</p>
+			<p>Maecenas non nulla eget erat bibendum egestas. Phasellus laoreet posuere urna ut ultrices. Morbi eget est facilisis, imperdiet purus egestas, sollicitudin dolor. Nunc lobortis ut orci quis congue. Nunc sit amet laoreet augue. Donec a nibh accumsan, finibus purus eget, venenatis tortor. Fusce lobortis libero luctus urna euismod, non porttitor dui eleifend. Aenean non massa diam. Quisque sollicitudin maximus eros, accumsan aliquet ligula. Ut blandit nunc et lectus porta, a auctor sapien tempor. Phasellus commodo lorem in leo lacinia porttitor. Suspendisse et condimentum velit. Fusce a ex lectus. Nullam vel condimentum est.</p>
+			<p>Suspendisse sit amet pulvinar tortor. Donec vel lobortis arcu. Nullam sit amet commodo eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed feugiat ipsum posuere enim imperdiet feugiat. Sed accumsan eu augue nec viverra. Ut posuere nisi non bibendum efficitur. Proin elementum convallis felis, quis bibendum velit auctor ut. Curabitur ultricies urna enim, non sodales libero tristique eget.</p>
+		</dk-offscreen>
+
+		<dk-offscreen-toggle for="nav-3">
+			Toggle Right Drawer 2 (no animation)
+		</dk-offscreen-toggle>
+
+		<dk-offscreen id="nav-3" from-right>
+			<dk-offscreen-toggle for="nav-3">
+				Close
+			</dk-offscreen-toggle>
+
+			<p>This is child content</p>
+		</dk-offscreen>
+
+		<script>
+			document.getElementById('disable-nav-2').addEventListener('click', () => {
+				const ex1 = document.getElementById('nav-2');
+				if (ex1.hasAttribute('disabled')) {
+					ex1.removeAttribute('disabled');
+				} else {
+					ex1.setAttribute('disabled', '');
+				}
+			});
+
+			document.getElementById('toggle-nav-2').addEventListener('click', () => {
+				const ex1 = document.getElementById('nav-2');
+				if (ex1.hasAttribute('expanded')) {
+					ex1.removeAttribute('expanded');
+				} else {
+					ex1.setAttribute('expanded', '');
+				}
+			});
+		</script>
+
+		<section>
+			<h2>Some sample content to help make a page scroll.</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus venenatis ornare. Proin nec leo sollicitudin, rhoncus odio condimentum, porta nisi. Vivamus lacinia risus quam, sed suscipit lacus blandit eu. Praesent scelerisque laoreet risus, sed elementum tortor fringilla id. Nulla fermentum sapien eros, quis dictum urna congue et. Proin lacus sapien, fringilla quis congue non, pharetra sed turpis. Pellentesque condimentum, risus vel dignissim lobortis, lacus est malesuada ex, nec blandit enim lectus ut eros. Vivamus non ullamcorper dui. Nunc aliquet consequat lectus, ut pellentesque est faucibus eget. Suspendisse iaculis tristique pharetra. Maecenas et mollis odio.</p>
+			<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nec orci pharetra ligula lobortis volutpat pulvinar vel sapien. In imperdiet tellus sapien, fermentum venenatis nulla aliquet sed. Vestibulum rutrum condimentum ex, ac egestas tellus elementum sed. Aenean accumsan libero eu arcu fringilla, at vulputate velit pharetra. Aenean congue dui arcu, at facilisis mauris pulvinar in. Praesent lacus nisl, convallis at ornare in, ullamcorper sit amet diam. Duis quis ultrices metus. Integer porttitor imperdiet odio, at condimentum quam. Suspendisse ornare, ipsum et blandit blandit, risus lacus dapibus dolor, id malesuada nisl lectus eget mi. Suspendisse erat est, molestie vitae ligula sit amet, convallis commodo ligula. In ultrices, dui iaculis ullamcorper dictum, mi nunc tempor sapien, non pellentesque dolor libero sed purus. Sed laoreet nisl ultrices, lobortis justo a, consectetur ipsum. Fusce ullamcorper luctus commodo. Mauris vestibulum dolor eu odio hendrerit suscipit. Sed et posuere metus.</p>
+			<p>Proin semper turpis nibh, sed consectetur ligula cursus sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque placerat aliquet. Cras congue vehicula quam at varius. Vestibulum velit ipsum, rutrum at velit eu, faucibus vehicula metus. Morbi eu maximus urna. Praesent pretium placerat lobortis. In fringilla ullamcorper tristique. Nulla et finibus eros, sed finibus urna. Aliquam id turpis eget nibh sollicitudin faucibus. In tincidunt tincidunt lectus nec volutpat. Ut nec arcu vitae ex sodales aliquet et non magna. Proin porta, tortor vel aliquet luctus, orci massa porttitor nisl, sed congue sem purus vitae mauris. Mauris pharetra euismod sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dictum consectetur ipsum, in ultricies erat interdum imperdiet.</p>
+			<p>Maecenas non nulla eget erat bibendum egestas. Phasellus laoreet posuere urna ut ultrices. Morbi eget est facilisis, imperdiet purus egestas, sollicitudin dolor. Nunc lobortis ut orci quis congue. Nunc sit amet laoreet augue. Donec a nibh accumsan, finibus purus eget, venenatis tortor. Fusce lobortis libero luctus urna euismod, non porttitor dui eleifend. Aenean non massa diam. Quisque sollicitudin maximus eros, accumsan aliquet ligula. Ut blandit nunc et lectus porta, a auctor sapien tempor. Phasellus commodo lorem in leo lacinia porttitor. Suspendisse et condimentum velit. Fusce a ex lectus. Nullam vel condimentum est.</p>
+			<p>Suspendisse sit amet pulvinar tortor. Donec vel lobortis arcu. Nullam sit amet commodo eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed feugiat ipsum posuere enim imperdiet feugiat. Sed accumsan eu augue nec viverra. Ut posuere nisi non bibendum efficitur. Proin elementum convallis felis, quis bibendum velit auctor ut. Curabitur ultricies urna enim, non sodales libero tristique eget.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus venenatis ornare. Proin nec leo sollicitudin, rhoncus odio condimentum, porta nisi. Vivamus lacinia risus quam, sed suscipit lacus blandit eu. Praesent scelerisque laoreet risus, sed elementum tortor fringilla id. Nulla fermentum sapien eros, quis dictum urna congue et. Proin lacus sapien, fringilla quis congue non, pharetra sed turpis. Pellentesque condimentum, risus vel dignissim lobortis, lacus est malesuada ex, nec blandit enim lectus ut eros. Vivamus non ullamcorper dui. Nunc aliquet consequat lectus, ut pellentesque est faucibus eget. Suspendisse iaculis tristique pharetra. Maecenas et mollis odio.</p>
+			<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nec orci pharetra ligula lobortis volutpat pulvinar vel sapien. In imperdiet tellus sapien, fermentum venenatis nulla aliquet sed. Vestibulum rutrum condimentum ex, ac egestas tellus elementum sed. Aenean accumsan libero eu arcu fringilla, at vulputate velit pharetra. Aenean congue dui arcu, at facilisis mauris pulvinar in. Praesent lacus nisl, convallis at ornare in, ullamcorper sit amet diam. Duis quis ultrices metus. Integer porttitor imperdiet odio, at condimentum quam. Suspendisse ornare, ipsum et blandit blandit, risus lacus dapibus dolor, id malesuada nisl lectus eget mi. Suspendisse erat est, molestie vitae ligula sit amet, convallis commodo ligula. In ultrices, dui iaculis ullamcorper dictum, mi nunc tempor sapien, non pellentesque dolor libero sed purus. Sed laoreet nisl ultrices, lobortis justo a, consectetur ipsum. Fusce ullamcorper luctus commodo. Mauris vestibulum dolor eu odio hendrerit suscipit. Sed et posuere metus.</p>
+			<p>Proin semper turpis nibh, sed consectetur ligula cursus sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque placerat aliquet. Cras congue vehicula quam at varius. Vestibulum velit ipsum, rutrum at velit eu, faucibus vehicula metus. Morbi eu maximus urna. Praesent pretium placerat lobortis. In fringilla ullamcorper tristique. Nulla et finibus eros, sed finibus urna. Aliquam id turpis eget nibh sollicitudin faucibus. In tincidunt tincidunt lectus nec volutpat. Ut nec arcu vitae ex sodales aliquet et non magna. Proin porta, tortor vel aliquet luctus, orci massa porttitor nisl, sed congue sem purus vitae mauris. Mauris pharetra euismod sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dictum consectetur ipsum, in ultricies erat interdum imperdiet.</p>
+			<p>Maecenas non nulla eget erat bibendum egestas. Phasellus laoreet posuere urna ut ultrices. Morbi eget est facilisis, imperdiet purus egestas, sollicitudin dolor. Nunc lobortis ut orci quis congue. Nunc sit amet laoreet augue. Donec a nibh accumsan, finibus purus eget, venenatis tortor. Fusce lobortis libero luctus urna euismod, non porttitor dui eleifend. Aenean non massa diam. Quisque sollicitudin maximus eros, accumsan aliquet ligula. Ut blandit nunc et lectus porta, a auctor sapien tempor. Phasellus commodo lorem in leo lacinia porttitor. Suspendisse et condimentum velit. Fusce a ex lectus. Nullam vel condimentum est.</p>
+			<p>Suspendisse sit amet pulvinar tortor. Donec vel lobortis arcu. Nullam sit amet commodo eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed feugiat ipsum posuere enim imperdiet feugiat. Sed accumsan eu augue nec viverra. Ut posuere nisi non bibendum efficitur. Proin elementum convallis felis, quis bibendum velit auctor ut. Curabitur ultricies urna enim, non sodales libero tristique eget.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus venenatis ornare. Proin nec leo sollicitudin, rhoncus odio condimentum, porta nisi. Vivamus lacinia risus quam, sed suscipit lacus blandit eu. Praesent scelerisque laoreet risus, sed elementum tortor fringilla id. Nulla fermentum sapien eros, quis dictum urna congue et. Proin lacus sapien, fringilla quis congue non, pharetra sed turpis. Pellentesque condimentum, risus vel dignissim lobortis, lacus est malesuada ex, nec blandit enim lectus ut eros. Vivamus non ullamcorper dui. Nunc aliquet consequat lectus, ut pellentesque est faucibus eget. Suspendisse iaculis tristique pharetra. Maecenas et mollis odio.</p>
+			<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nec orci pharetra ligula lobortis volutpat pulvinar vel sapien. In imperdiet tellus sapien, fermentum venenatis nulla aliquet sed. Vestibulum rutrum condimentum ex, ac egestas tellus elementum sed. Aenean accumsan libero eu arcu fringilla, at vulputate velit pharetra. Aenean congue dui arcu, at facilisis mauris pulvinar in. Praesent lacus nisl, convallis at ornare in, ullamcorper sit amet diam. Duis quis ultrices metus. Integer porttitor imperdiet odio, at condimentum quam. Suspendisse ornare, ipsum et blandit blandit, risus lacus dapibus dolor, id malesuada nisl lectus eget mi. Suspendisse erat est, molestie vitae ligula sit amet, convallis commodo ligula. In ultrices, dui iaculis ullamcorper dictum, mi nunc tempor sapien, non pellentesque dolor libero sed purus. Sed laoreet nisl ultrices, lobortis justo a, consectetur ipsum. Fusce ullamcorper luctus commodo. Mauris vestibulum dolor eu odio hendrerit suscipit. Sed et posuere metus.</p>
+			<p>Proin semper turpis nibh, sed consectetur ligula cursus sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque placerat aliquet. Cras congue vehicula quam at varius. Vestibulum velit ipsum, rutrum at velit eu, faucibus vehicula metus. Morbi eu maximus urna. Praesent pretium placerat lobortis. In fringilla ullamcorper tristique. Nulla et finibus eros, sed finibus urna. Aliquam id turpis eget nibh sollicitudin faucibus. In tincidunt tincidunt lectus nec volutpat. Ut nec arcu vitae ex sodales aliquet et non magna. Proin porta, tortor vel aliquet luctus, orci massa porttitor nisl, sed congue sem purus vitae mauris. Mauris pharetra euismod sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dictum consectetur ipsum, in ultricies erat interdum imperdiet.</p>
+			<p>Maecenas non nulla eget erat bibendum egestas. Phasellus laoreet posuere urna ut ultrices. Morbi eget est facilisis, imperdiet purus egestas, sollicitudin dolor. Nunc lobortis ut orci quis congue. Nunc sit amet laoreet augue. Donec a nibh accumsan, finibus purus eget, venenatis tortor. Fusce lobortis libero luctus urna euismod, non porttitor dui eleifend. Aenean non massa diam. Quisque sollicitudin maximus eros, accumsan aliquet ligula. Ut blandit nunc et lectus porta, a auctor sapien tempor. Phasellus commodo lorem in leo lacinia porttitor. Suspendisse et condimentum velit. Fusce a ex lectus. Nullam vel condimentum est.</p>
+			<p>Suspendisse sit amet pulvinar tortor. Donec vel lobortis arcu. Nullam sit amet commodo eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed feugiat ipsum posuere enim imperdiet feugiat. Sed accumsan eu augue nec viverra. Ut posuere nisi non bibendum efficitur. Proin elementum convallis felis, quis bibendum velit auctor ut. Curabitur ultricies urna enim, non sodales libero tristique eget.</p>
+		</section>
+
+	</body>
+</html>

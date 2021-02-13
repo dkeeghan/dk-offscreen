@@ -1,0 +1,23 @@
+dk-offscreen {
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  z-index: 999;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  transform: translate3d(-300px, 0, 0);
+  transition: transform 300ms;
+}
+dk-offscreen[from-right] {
+  left: auto;
+  right: 0;
+  transform: translate3d(300px, 0, 0);
+}
+dk-offscreen[aria-hidden=true]:not([disabled-by-mq]) {
+  display: none;
+}
+dk-offscreen.is-expanded {
+  transform: translate3d(0, 0, 0);
+}
+/*# sourceMappingURL=dk-offscreen.css.map */

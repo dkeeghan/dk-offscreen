@@ -1,0 +1,38 @@
+$width: 300px !default;
+$z-index: 999 !default;
+$duration: 300ms !default;
+
+@mixin update-width($new-width) {
+	width: $new-width;
+	transform: translate3d(-$new-width, 0, 0);
+
+	&[from-right] {
+		transform: translate3d($new-width, 0, 0);
+	}
+}
+
+dk-offscreen {
+	position: fixed;
+	height: 100%;
+	width: $width;
+	z-index: $z-index;
+	overflow: auto;
+	top: 0;
+	left: 0;
+	transform: translate3d(-$width, 0, 0);
+	transition: transform $duration;
+
+	&[from-right] {
+		left: auto;
+		right: 0;
+		transform: translate3d($width, 0, 0);
+	}
+
+	&[aria-hidden="true"]:not([disabled-by-mq]) {
+		display: none;
+	}
+
+	&.is-expanded {
+		transform: translate3d(0, 0, 0);
+	}
+}
