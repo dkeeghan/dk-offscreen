@@ -4,16 +4,8 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 
 ## Installation
 
-Add the following line to your package.json in the `dependencies`:
-
-```json
-"dk-offscreen": "git+ssh://git@dvcs.deloittedigital.com.au:22/cmsstarter/dk-offscreen.git#master"
-```
-
-then:
-
 ```bash
-npm install dk-offscreen
+npm install @dkwd/dk-offscreen
 ```
 
 ## Usage
@@ -89,3 +81,7 @@ If you customize the configuration a lot, you can consider moving them to indivi
 npm start
 ```
 To run a local development server that serves the basic demo located in `demo/index.html`
+
+## Documentation
+
+*Documentation WIP*

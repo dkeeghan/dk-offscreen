@@ -1,11 +1,18 @@
 {
   "name": "@dkwd/dk-offscreen",
-  "version": "0.0.1",
-  "description": "Webcomponent dk-offscreen following open-wc recommendations",
-  "author": "Deloitte Digital Australia",
+  "version": "0.0.2",
+  "description": "Offscreen Navigation Web Component built using the open-wc recommendation",
+  "author": "Damian Keeghan",
   "license": "MIT",
   "engines": {
     "node": ">= 14.15.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkeeghan/dk-offscreen"
+  },
+  "bugs": {
+    "url": "https://github.com/dkeeghan/dk-offscreen/issues"
   },
   "browserslist": [
     "> 1%",
